@@ -4,7 +4,7 @@ This document describes the changes made to rebrand DocuSeal as **Zennopay Sign*
 
 ## Overview
 
-This fork implements a comprehensive rebranding while maintaining AGPL-3.0 compliance and keeping the codebase easily mergeable with upstream DocuSeal updates.
+This fork implements a comprehensive rebranding while preserving AGPL-3.0 licensing and keeping the codebase easily mergeable with upstream DocuSeal updates.
 
 ## Changes Made
 
@@ -43,7 +43,7 @@ All branding is now controlled via environment variables set in the Dockerfile:
 
 #### AGPL Compliance
 - Added `app/views/shared/_footer.html.erb` with link to source repository
-- Integrated footer into main application layout
+- Integrated footer into the `application` layout (including the landing and sign-in pages). The `form`, `plain`, and `mailer` layouts do not render this footer; signing pages use `form`.
 - Kept all LICENSE files intact
 
 ### 4. Dockerfile
@@ -63,13 +63,14 @@ docker build -t zennopay-sign .
 ```bash
 docker run -p 3000:3000 \
   -e HOST=sign.zennopay.com \
+  -e APP_URL=https://sign.zennopay.com \
   -v ./data:/data \
   zennopay-sign
 ```
 
 ### Cloud Run Deployment
 
-The application is configured to run on Google Cloud Run at https://sign.zennopay.com
+Set `APP_URL=https://sign.zennopay.com` in the Cloud Run service's environment variables for deployment at https://sign.zennopay.com. Non-multitenant deployments use `APP_URL` to generate mail and PDF audit-trail links; `HOST` and `PRODUCT_EMAIL_URL` do not configure those links. Without `APP_URL` or a saved application URL, they default to `http://localhost:3000`.
 
 ## Brand Colors
 
@@ -116,16 +117,16 @@ git merge upstream/master
 - [ ] Sign-in page shows Zennopay logo and branding
 - [ ] Document signing page shows Zennopay logo
 - [ ] Email templates show "Zennopay Sign" in text
-- [ ] Footer displays "View source code" link to repository
+- [ ] Pages using the `application` layout display the footer's "View source code" link to the repository
 - [ ] Page title shows "Zennopay Sign"
 - [ ] PDF audit trail includes Zennopay logo
 
 ## AGPL Compliance
 
-This fork maintains full AGPL-3.0 compliance:
+The following source-access and licensing measures are present in this fork:
 
 1. ✅ Original LICENSE files preserved
-2. ✅ Source code link visible in footer on all pages
+2. ✅ Source code link visible in the `application` layout's footer (including landing and sign-in pages); the `form`, `plain`, and `mailer` layouts do not render this footer
 3. ✅ Repository URL configurable via GITHUB_URL environment variable
 4. ✅ No removal of DocuSeal copyright notices
 5. ✅ Clear documentation of changes (this file)

@@ -43,11 +43,11 @@ docker run -p 3000:3000 \
 - [ ] Header shows "Zennopay Sign" text next to logo
 - [ ] Footer contains: "Zennopay Sign is open source software. View source code"
 - [ ] Footer link points to repository (check URL)
-- [ ] AGPL compliance visible
+- [ ] Source code link visible in the `application` layout's footer
 
 **Screenshot**: `landing-page.png`
 
-### Sign-In Page (/users/sign_in)
+### Sign-In Page (/sign_in)
 
 - [ ] Logo displays correctly (Zennopay mark)
 - [ ] Page title: "Zennopay Sign"
@@ -71,7 +71,8 @@ After first run, check:
 **Check**:
 - [ ] Logo visible at top of form
 - [ ] "Zennopay Sign" in page title
-- [ ] Footer with source code link present
+
+These signing pages use the `form` layout, which does not render the shared source-code footer.
 
 **Screenshot**: `signing-form.png`
 
@@ -128,7 +129,8 @@ docker exec <container_id> ls -lh /app/public/brand-logo.png /app/lib/pdf_icons/
 
 ### Source Code Link
 
-Using browser DevTools:
+Using browser DevTools on a page using the `application` layout (such as `/` or `/sign_in`):
+
 1. Inspect footer element
 2. Find link with text "View source code"
 3. Verify href matches GITHUB_URL
@@ -152,11 +154,13 @@ Using browser DevTools:
 
 ## AGPL Compliance Check
 
-- [ ] Footer present on all pages (/, /users/sign_in, /start/*, /submit/*)
+- [ ] Shared source-code footer present on pages using the `application` layout (including `/` and `/sign_in`)
 - [ ] Footer contains "View source code" link
 - [ ] Link is accessible (not hidden or broken)
 - [ ] LICENSE file unchanged in repository
 - [ ] LICENSE_ADDITIONAL_TERMS file unchanged
+
+The `form`, `plain`, and `mailer` layouts do not render the shared source-code footer. Signing pages (`/d/*` and `/s/*`) use `form`; emails have separate attribution. This checklist documents the existing source-access and licensing measures.
 
 ## Known Issues / Notes
 
@@ -178,6 +182,6 @@ If you find any "DocuSeal" references that should be "Zennopay Sign":
 ✅ All checkboxes above are checked
 ✅ No "DocuSeal" visible in user-facing areas (except LICENSE)
 ✅ Zennopay logo displays correctly everywhere
-✅ AGPL footer present and functional
+✅ Source-code footer present and functional on pages using the `application` layout
 ✅ Docker builds without errors
 ✅ Application runs and is accessible
