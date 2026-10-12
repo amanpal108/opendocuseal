@@ -14,6 +14,7 @@ module Docuseal
   SUPPORT_EMAIL = ENV.fetch('SUPPORT_EMAIL', 'support@docuseal.com')
   HOST = ENV.fetch('HOST', 'localhost')
   BRAND_COLOR = ENV.fetch('BRAND_COLOR', '#e97a42')
+  LOGO_LINK_URL = ENV.fetch('LOGO_LINK_URL', nil)
   AATL_CERT_NAME = 'docuseal_aatl'
   CONSOLE_URL = if Rails.env.development?
                   'http://console.localhost.io:3001'

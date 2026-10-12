@@ -57,6 +57,7 @@ ENV SUPPORT_EMAIL="support@zennopay.com"
 ENV BRAND_COLOR="#6560FF"
 ENV TWITTER_HANDLE="@zennopay"
 ENV TWITTER_URL="https://twitter.com/zennopay"
+ENV LOGO_LINK_URL="https://zennopay.com"
 
 WORKDIR /app
 

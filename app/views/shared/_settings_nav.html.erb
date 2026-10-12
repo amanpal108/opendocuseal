@@ -84,7 +84,8 @@
             </li>
           <% end %>
         <% end %>
-        <% if !Docuseal.demo? && !turbo_native_ios? && can?(:manage, EncryptedConfig) && (current_user != true_user || !current_account.linked_account_account) %>
+        <%# Hidden for internal tool - Plans/Pro menu item removed %>
+        <% if false && !Docuseal.demo? && !turbo_native_ios? && can?(:manage, EncryptedConfig) && (current_user != true_user || !current_account.linked_account_account) %>
           <li>
             <%= content_for(:pro_link) || link_to(Docuseal.multitenant? ? console_redirect_index_path(redir: "#{Docuseal::CONSOLE_URL}/plans") : "#{Docuseal::CLOUD_URL}/sign_up?#{{ redir: "#{Docuseal::CONSOLE_URL}/on_premises" }.to_query}", class: 'text-base hover:bg-base-300', data: { turbo: false }) do %>
               <%= t('plans') %>
