@@ -49,6 +49,12 @@ FROM ruby:4.0.5-alpine AS app
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT="development:test"
 ENV OPENSSL_CONF=/etc/openssl_legacy.cnf
+ENV PRODUCT_NAME="Zennopay Sign"
+ENV PRODUCT_URL="https://zennopay.com"
+ENV PRODUCT_EMAIL_URL="https://sign.zennopay.com"
+ENV GITHUB_URL="https://github.com/zennopay/docuseal-fork"
+ENV SUPPORT_EMAIL="support@zennopay.com"
+ENV BRAND_COLOR="#6560FF"
 
 WORKDIR /app
 
