@@ -6,10 +6,10 @@ module Docuseal
   NEWSLETTER_URL = "#{PRODUCT_URL}/newsletters".freeze
   PRODUCT_NAME = ENV.fetch('PRODUCT_NAME', 'DocuSeal')
   DEFAULT_APP_URL = ENV.fetch('APP_URL', 'http://localhost:3000')
-  GITHUB_URL = ENV.fetch('GITHUB_URL', 'https://github.com/docusealco/docuseal')
+  GITHUB_URL = ENV.fetch('GITHUB_URL', 'https://github.com/amanpal108/opendocuseal')
   DISCORD_URL = 'https://discord.gg/qygYCDGck9'
-  TWITTER_URL = 'https://twitter.com/docusealco'
-  TWITTER_HANDLE = '@docusealco'
+  TWITTER_URL = ENV.fetch('TWITTER_URL', 'https://twitter.com/docusealco')
+  TWITTER_HANDLE = ENV.fetch('TWITTER_HANDLE', '@docusealco')
   CHATGPT_URL = "#{PRODUCT_URL}/chat".freeze
   SUPPORT_EMAIL = ENV.fetch('SUPPORT_EMAIL', 'support@docuseal.com')
   HOST = ENV.fetch('HOST', 'localhost')
